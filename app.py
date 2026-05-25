@@ -8,7 +8,8 @@ logging.basicConfig(level=logging.INFO)
 @app.route("/")
 def home():
     app.logger.info("Home endpoint was called")
-    return "✅ Hello from my Flask app running on Azure!"
+    1 / 0   # intentional error
+    return "This will never run"
 
 @app.route("/health")
 def health():
