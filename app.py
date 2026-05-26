@@ -8,8 +8,18 @@ logging.basicConfig(level=logging.INFO)
 @app.route("/")
 def home():
     app_name = os.getenv("APP_NAME", "Default App Name")
-    app.logger.info("Home endpoint called, APP_NAME=%s", app_name)
-    return f"✅ Hello from {app_name}!"
+    environment = os.getenv("ENVIRONMENT", "dev")
+
+    app.logger.info(
+        "Home endpoint called | APP_NAME=%s | ENVIRONMENT=%s",
+        app_name,
+        environment
+    )
+
+    if environment == "prod":
+        return f"✅ Welcome to {app_name}"
+    else:
+        return f"🧪 [{environment.upper()}] {app_name}"
 
 @app.route("/health")
 def health():
@@ -17,3 +27,4 @@ def health():
 
 if __name__ == "__main__":
     app.run()
+
