@@ -19,9 +19,11 @@ def home():
     app.logger.info("Read secret from Key Vault")
     return f"✅ {secret}"
 
+
 @app.route("/health")
 def health():
-    raise Exception("Test exception for Application Insights")
+    return jsonify(status="OK")
+
 
 
 if __name__ == "__main__":
