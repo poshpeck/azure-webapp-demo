@@ -21,7 +21,8 @@ def home():
 
 @app.route("/health")
 def health():
-    return jsonify(status="OK")
+    raise Exception("Test exception for Application Insights")
+
 
 if __name__ == "__main__":
     app.run()
